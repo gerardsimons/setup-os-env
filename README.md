@@ -1,2 +1,2 @@
 # bash-zsh-profiles
-My setup of bash and zsh profiles
+My setup of bash and zsh profiles for MacOS
