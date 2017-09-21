@@ -1,0 +1,23 @@
+# Default to Python 3
+# alias python=/usr/local/bin/python3
+alias pydoc=/usr/local/bin/pydoc3
+
+# MySQL path setup
+export PATH=$PATH:/usr/local/mysql/bin
+export PATH=:$PATH/usr/local/php5/bin
+
+# Make sure envwrapper uses the python we are using, usually Python 3
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+
+
+export WORKON_HOME=~/.virtualenvs
+. /usr/local/bin/virtualenvwrapper.sh
+
+alias g=git
+alias ll="ls -l"
+alias ..='cd ..'
+
+alias http="python3 -m http.server"
+
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
