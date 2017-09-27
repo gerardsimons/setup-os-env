@@ -1,0 +1,23 @@
+# increase hist command history size
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+alias '..'='cd ..'
+
+# Because pbcopy rulesszzz
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+alias g=git
+alias ll="ls -l"
+alias ..='cd ..'
+
+alias ltr="ls -ltr"
+alias http="python3 -m http.server"
+alias untar='tar -xvzf'
+alias open='xdg-open'
+
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
