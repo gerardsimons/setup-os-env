@@ -85,3 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.common_profile
+
+if [[ $TERM = dumb ]]; then
+  unset zle_bracketed_paste
+fi

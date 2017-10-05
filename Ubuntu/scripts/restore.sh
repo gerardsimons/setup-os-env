@@ -54,8 +54,21 @@ sudo dselect update
 sudo dselect install
 sudo apt-get -u dselect-upgrade
 
-"$MY_DIR/setup_profiles.sh"
-#sh setup_profiles.sh
+printf "Installing zsh oh-my-zsh and profiles ... \n\n"
+sleep 1
+
+sudo apt-get -y install zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+
+cp ~/.bashrc ~/.bashrc.org
+cp ~/.zshrc ~/.zshrc.org
+
+cp ../.common_profile ~/
+cp ../.zshrc ~/
+cp ../.bashrc ~/
+
+chsh -s $(which zsh)
+sleep 1
 
 printf "Installing the Python virtual environment"
 sudo apt-get install -y python-pip
@@ -64,10 +77,14 @@ mkdir ~/.virtualenvs
 sudo apt-get install -y virtualenv
 sudo pip install virtualenvwrapper
 
-printf "\nInstalling fstab file...\n\n"
+printf "\n Setting up mount-points for hard disks ...\n\n"
 sleep 1
+sudo mkdir /media/bb
+sudo mkdir /media/bb_ext
 sudo cp $MY_DIR/fstab /etc/fstab
 sudo mount -a
+ln -s /media/bb ~/bb
+ln -s /media/bb_ext ~/bb_ext
 
 printf "Installing backup_now script"
 sleep 1

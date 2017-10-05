@@ -23,10 +23,10 @@ dpkg --get-selections > $DEST_DIR/meta/Package.list
 sudo cp -R /etc/apt/sources.list* $DEST_DIR/meta/Sources/
 sudo apt-key exportall > $DEST_DIR/meta/Repo.keys
 
-rsync -r -a --info=progress2 /home/`whoami` $DEST_DIR/data/`whoami`
-rsync -r -a --progress /opt/ $DEST_DIR/data/opt
+rsync -r -a --no-links --info=progress2 /home/`whoami` $DEST_DIR/data/`whoami`
+rsync -r -a --no-links --progress /opt/ $DEST_DIR/data/opt
 
 rm -r $DEST_DIR/../latest
 ln -s `basename $DEST_DIR` $DEST_DIR/../latest
 
-notify-send 'Gerard Backup' 'Complete'
+notify-send 'Gerard Backup' 'IS COMPLETEEEE!!!!'
