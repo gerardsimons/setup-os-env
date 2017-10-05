@@ -57,6 +57,7 @@ sudo apt-get -u dselect-upgrade
 "$MY_DIR/setup_profiles.sh"
 #sh setup_profiles.sh
 
+printf "Installing the Python virtual environment"
 sudo apt-get install -y python-pip
 pip install virtualenv
 mkdir ~/.virtualenvs
@@ -68,6 +69,11 @@ sleep 1
 sudo cp $MY_DIR/fstab /etc/fstab
 sudo mount -a
 
-printf "Installing backup script"
+printf "Installing backup_now script"
 sleep 1
-echo ""
+ln -s ~/bb/Backups/Ubuntu/Partial ~/Backups
+echo "~/bb/Backups/setup-os-env/Ubuntu/scripts/backup.sh ~/Backups/" > ~/backup_now.sh
+
+printf "Setting up crontab for backing up at reboot ... "
+sleep 1
+(crontab -l 2>/dev/null; echo "@reboot ~/backup_now.sh") | crontab -
