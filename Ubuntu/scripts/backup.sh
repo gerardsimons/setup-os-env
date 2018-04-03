@@ -4,6 +4,8 @@ if [ $# -eq 0 ]
 		exit 1
 fi
 	
+EXCLUDE="--exclude=.virtualenvs"
+
 export DEST_DIR=$1/$(date +%Y%m%d_%H%M%S)
 mkdir $DEST_DIR
 
@@ -23,8 +25,8 @@ dpkg --get-selections > $DEST_DIR/meta/Package.list
 sudo cp -R /etc/apt/sources.list* $DEST_DIR/meta/Sources/
 sudo apt-key exportall > $DEST_DIR/meta/Repo.keys
 
-rsync -r -a --no-links --info=progress2 /home/`whoami` $DEST_DIR/data/`whoami`
-rsync -r -a --no-links --progress /opt/ $DEST_DIR/data/opt
+rsync -r -a --no-links --info=progress2 $EXCLUDE /home/`whoami` $DEST_DIR/data/`whoami`
+rsync -r -a --no-links --info=progress2 $EXCLUE  /opt/ $DEST_DIR/data/opt
 
 rm -r $DEST_DIR/../latest
 ln -s `basename $DEST_DIR` $DEST_DIR/../latest
