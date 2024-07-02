@@ -1,0 +1,12 @@
+alias g=git
+alias ltr='ls -ltr'
+alias ll='ls -l'
+
+alias fdi='fd -IH'
+
+# Sublime
+alias subl='/Applications/Sublime\ Text.app/Contents/MacOS/sublime_text'
+
+alias http='python -m http.server'
+
+alias gls='gsutil ls'
